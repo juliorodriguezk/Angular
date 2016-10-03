@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Angular</title>
+</head>
+
+<body ng-app ng-init="textoInput='Valor inicial'">
+    <!-- Ejemplo de uso de la directiva ng-init y eventos de ratón -->
+    <div ng-hide="oculto">¿ESTOY OCULTO?
+        <input type="text" ng-model="textoInput"> {{ textoInput }} </div>
+    ¿Ocultar?
+    <input type="checkbox" ng-model="oculto">
+    <div ng-show="oculto">¡¡¡ EL INPUT SUPERIOR SE HA OCULTADO !!!</div>
+
+    <!-- <button ng-click="textoInput='¡Click!'">Click</button><br>-->
+    <!-- <button ng-mouseenter="textoInput='¡Entro!'" ng-mouseleave="textoInput='¡Salgo!'">Entrar + Salir</button><br> -->
+    <!-- <button ng-mousedown="textoInput='!Pulso¡'" ng-mouseup="textoInput='!Suelto!'">Pulsar + Soltar</button> -->
+
+
+    <script type="text/javascript" src="angular.js"></script>
+</body>
+
+</html>

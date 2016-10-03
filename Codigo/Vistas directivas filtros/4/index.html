@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Angular</title>
+    <link rel="stylesheet" href="prueba.css">
+</head>
+
+<body ng-app ng-init="clases={logado:'azul', noLogado:'rojo'}; estado={logado:false}; usuario={nombre:'Usuario'}; datos=[{nombre:'Ana', alta: '2015-01-01', gastos:300, edad: 24, ciudad:'Valencia'}, {nombre:'Pedro', alta: '2013-11-01', gastos:1000, edad: 34, ciudad: 'Madrid'}, {nombre:'Joan', alta: '2014-02-11', gastos:500, edad: 50, ciudad: 'Barcelona'}, {nombre:'Mikel', alta: '2015-01-01', gastos:300, edad: 20, ciudad: 'Bilbao'}, {nombre:'Julia', alta: '2010-01-01', gastos:3000, edad: 54, ciudad:'Málaga'}]">
+    <!-- Ejemplo de uso de ng-repeat en una tabla -->
+    <div>
+        <div ng-switch="estado.logado">
+            <div ng-switch-when="true" ng-class="clases.logado">Bienvenido <span ng-bind="usuario.nombre"></span>
+                <br>
+                <br>
+                <table>
+                    <tr>
+                        <th>nombre</th>
+                        <th>fecha de alta</th>
+                        <th> límite de gastos</th>
+                        <th>edad</th>
+                        <th>ciudad de origen</th>
+                    </tr>
+                    <tr ng-repeat="persona in datos">
+                        <td> {{ persona.nombre }} </td>
+                        <td> {{ persona.alta }} </td>
+                        <td> {{ persona.gastos }} </td>
+                        <td> {{ persona.edad }} </td>
+                        <td> {{ persona.ciudad }} </td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-switch-default ng-class="clases.noLogado">Pulsa el botón Login para acceder
+                <br>
+                <input type="text" ng-model="usuario.nombre">
+            </div>
+        </div>
+        <button ng-click="estado.logado=true" ng-hide="estado.logado">Login</button>
+        <button ng-click="estado.logado=false; usuario.nombre='Usuario'" ng-show="estado.logado">Salir</button>
+    </div>
+    <script type="text/javascript" src="angular.js"></script>
+</body>
+
+</html>

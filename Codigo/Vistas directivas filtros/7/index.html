@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Angular</title>
+    <link rel="stylesheet" href="prueba.css">
+</head>
+
+<body ng-app ng-init="categorias=[{id:'nombre', texto: 'nombre'}, {id: 'alta', texto:'fecha de alta'}, {id: 'gastos', texto:'límite de gastos'}, {id: 'edad', texto:'edad'}, {id: 'ciudad', texto:'ciudad de origen'}];clases={logado:'azul', noLogado:'rojo'}; estado={logado:false, orden: 'nombre'}; usuario={nombre:'Usuario'}; datos=[{nombre:'Ana', alta: '2015-01-01', gastos:300, edad: 24, ciudad:'Valencia'}, {nombre:'Pedro', alta: '2013-11-01', gastos:1000, edad: 34, ciudad: 'Madrid'}, {nombre:'Joan', alta: '2014-02-11', gastos:500, edad: 50, ciudad: 'Barcelona'}, {nombre:'Mikel', alta: '2015-01-01', gastos:300, edad: 20, ciudad: 'Bilbao'}, {nombre:'Julia', alta: '2010-01-01', gastos:3000, edad: 54, ciudad:'Málaga'}]">
+    <!-- Ejemplo de uso de filtro de limit to -->
+    <div>
+        <div ng-switch="estado.logado">
+            <div ng-switch-when="true" ng-class="clases.logado">
+                <h1>Bienvenido <span ng-bind="usuario.nombre"></span></h1> {{ " Límite de filas : " }}
+                <input type="number" min="-50" max="50" value="5" ng-model="limite"> {{ " Inicio de los datos : " }}
+                <input type="number" min="-50" max="50" value="0" ng-model="inicioDatos">{{ " Ordenar por : "}}
+                <select ng-options="categoria.texto for categoria in categorias track by categoria.id" ng-model="estado.orden">
+
+                </select>
+                <table>
+                    <tr>
+                        <th ng-repeat="categoria in categorias">{{ categoria.texto }}</th>
+                    </tr>
+                    <tr ng-repeat="persona in datos | orderBy : estado.orden.id">
+                        <!-- <tr ng-repeat="persona in datos | orderBy : estado.orden.id : true"> -->
+                        <!-- <tr ng-repeat="persona in datos | limitTo : limite : inicioDatos| orderBy : estado.orden.id"> -->
+                        <td>
+                            {{ persona.nombre }}
+                        </td>
+                        <td>
+                            {{ persona.alta | date : 'dd/MM/yyyy'}}
+                        </td>
+                        <td>
+                            {{ persona.gastos| currency : '':0}} €
+                        </td>
+                        <td>
+                            {{ persona.edad | number}}
+                        </td>
+                        <td>
+                            {{ persona.ciudad |uppercase}}
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div ng-switch-default ng-class="clases.noLogado">
+                <h1>Pulsa el botón Login para acceder</h1>
+                <br>
+                <input type="text" ng-model="usuario.nombre">
+            </div>
+        </div>
+        <button ng-click="estado.logado=true" ng-hide="estado.logado">Login</button>
+        <button ng-click="estado.logado=false; usuario.nombre='Usuario'" ng-show="estado.logado">Salir</button>
+    </div>
+    <script type="text/javascript" src="angular.js"></script>
+</body>
+
+</html>

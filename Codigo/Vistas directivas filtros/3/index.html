@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Angular - Sesión 2</title>
+    <link rel="stylesheet" href="prueba.css">
+</head>
+
+<body ng-app ng-init="clases={logado:'azul', noLogado:'rojo'}; estado={logado:false}; usuario={nombre:'Usuario'}">
+    <!-- Ejemplo de uso de la directiva ng-cloak y ng-switch -->
+    <div>
+        <div ng-switch="estado.logado">
+            <div ng-switch-when="true" ng-class="clases.logado">Bienvenido <span ng-bind="usuario.nombre"></span></div>
+            <div ng-switch-default ng-class="clases.noLogado">Pulsa el botón Login para acceder
+                <br>
+                <input type="text" ng-model="usuario.nombre">
+            </div>
+        </div>
+        <button ng-click="estado.logado=true" ng-hide="estado.logado">Login</button>
+        <button ng-click="estado.logado=false; usuario.nombre='Usuario'" ng-show="estado.logado">Salir</button>
+        <!--
+        <div ng-cloak>
+            {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }} {{ usuario.nombre }}
+        </div>
+-->
+    </div>
+    <script type="text/javascript" src="angular.js"></script>
+</body>
+
+</html>

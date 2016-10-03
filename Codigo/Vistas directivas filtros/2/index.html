@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Angular</title>
+</head>
+
+<body ng-app ng-init="texto='TEXTO INICIAL'">
+    <!-- Ejemplo de uso de la directiva ng-bind vs expresiones-->
+    <div ng-bind="texto"></div>
+    <br>
+    <ul>
+        <li>{{texto}}</li>
+        <li ng-bind="texto"> {{ "Se Sobreescribe este valor" }}</li>
+        <li>{{texto + 2}}</li>
+        <li>{{texto + texto + texto}}</li>
+    </ul>
+    <!--
+    <br>
+    <button ng-click="texto='EL TEXTO CAMBIADO'">Click</button>
+    <br>
+    <div ng-bind="texto"></div>
+    -->
+    <script type="text/javascript" src="angular.js"></script>
+</body>
+
+</html>
