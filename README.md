@@ -127,7 +127,7 @@ http://MiWeb/index.html#VistaN
 - Es necesario descargar e incluir el script angular-route.js acorde a la version usada de angular
 	- https://code.angularjs.org/X.X.X/angular-route.js
 
--Hay que configurar las rutas usando 
+- Hay que configurar las rutas usando 
 ´´´
 MiModulo.config(function($routeProvider){});
 ´´´
