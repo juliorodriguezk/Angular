@@ -1,0 +1,21 @@
+Filtro:
+<input type="text" ng-model="palabraFiltro[opcion]">
+<br>
+<br>
+<table>
+    <tr>
+        <th ng-repeat="dato in datos" ng-click="ordena(dato.id)">{{ dato.texto | uppercase }}</th>
+        <th> Detalles </th>
+    </tr>
+    <tr ng-repeat="persona in personas |filter : palabraFiltro | orderBy : ordenarPor : inverso ">
+        <td ng-repeat="(clave, dato) in persona" ng-switch="clave">
+            <span ng-switch-when="alta" ng-bind="dato | date"></span>
+            <span ng-switch-when="gastos" ng-bind="dato | currency"></span>
+            <span ng-switch-when="ciudad" ng-bind="dato | lowercase"></span>
+            <span ng-switch-default ng-bind="dato"></span>
+        </td>
+        <td>
+            <a href="#/persona/{{ persona.id }}">Ver detalles </a>
+        </td>
+    </tr>
+</table>

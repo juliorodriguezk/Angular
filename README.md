@@ -115,3 +115,50 @@ angular.module(nombreModulo).controller('NOMBRE', function($scope){});
 	- primera mayuscula
 	- Nombre significativo (camel case)
 	- añadir al final 'Ctrl' o 'Controller'
+
+### Routing
+- El módulo de routing permite a la aplicación definir las distintas vistas
+que se pueden usar
+```
+http://MiWeb/index.html#Vista1
+...
+http://MiWeb/index.html#VistaN
+```
+- Es necesario descargar e incluir el script angular-route.js acorde a la version usada de angular
+	- https://code.angularjs.org/X.X.X/angular-route.js
+
+-Hay que configurar las rutas usando 
+´´´
+MiModulo.config(function($routeProvider){});
+´´´
+-Podemos dar acceso al $routeProvider a variables que se pueden usar poniendo : delante al definirse el PATH
+	```
+	MiModulo.controller('micontrolador', function ($scope, $routeParams){});
+	```
+- $routeProvider proporciona dos métodos esenciales
+	- when(PATH, REDIRECCIONA_A)
+		- Para definir una ruta por defecto PATH = '/'
+		- Si en el controlador se ha incluido el $routeParams el path puede
+		  depender de variables declaradas en el controlador sirve para agrupar redirecciones en un mismo when
+		  ```
+		  .when('/ruta/que/quiero/:VARIABLE', ...)
+		  ```
+		- Si el path cambia a "PATH" va a hacer lo indicado en REDIRECCIONA_A es un objeto que ofrece las siguientes opciones
+		 - controller : String o función que define el nombre del controlador asociado al templaye que se cargue
+		 - controllerAs : String Se publica en el scope con el alias que asignemos
+		 - template : Se puede definir el template 
+		 - templateUrl: indica que el template se aloja en un fichero html
+		 - redirectTo: redirecciona al path que le indiquemos
+
+
+	- otherwise({redirectTo: 'PATH'})
+		- Si el path cambia y no está definido en ningún when redirecciona a PATH
+	
+- Resto de opciones y Métodos en https://docs.angularjs.org/api/ngRoute/provider/$routeProvider
+
+- Muy importante, para que funcione la redirección se puede hacer de dos formas
+	-  Haciendo uso del servicio $location
+	-  Mediante las vistas o links en caso de usar un href hay que indicar la raiz de la app con # si no no funcionará
+	```
+	    <a href="#Ruta/A/La/Que/Quiero/Cambiar">CAMBIA RUTA</a>
+	```

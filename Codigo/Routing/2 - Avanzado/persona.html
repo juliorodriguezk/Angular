@@ -1,0 +1,17 @@
+<h1>Datos de la persona: </h1>
+<div style="width: 40px; height: 40px; float: left; margin-right: 10px;">
+    <img ng-src="{{ 'media/images/' + datosPersona.imagen }}" style="width: 100%; height: 100%;"></div>
+<h2 ng-bind=" datosPersona.nombre "></h2>
+<div>
+    Fecha de alta:
+    <div><span ng-bind="datosPersona.alta " style="font-weight:bold; "></span></div>
+    Gasto Máximo:
+    <div><span ng-bind="datosPersona.gastos " style="font-weight:bold; "></span></div>
+    Edad:
+    <div><span ng-bind="datosPersona.edad " style="font-weight:bold; "></span></div>
+    Lugar Nacimiento:
+    <div><span ng-bind="datosPersona.ciudad " style="font-weight:bold; "></span></div>
+</div>
+<div>
+    <a href="#/">Volver</a>
+</div>

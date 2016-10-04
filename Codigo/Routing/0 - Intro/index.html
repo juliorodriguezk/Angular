@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Angular</title>
+    <link rel="stylesheet" href="demoApp.css">
+</head>
+<!-- Filtrado de los datos -->
+
+<body ng-app="demoApp">
+<div>
+  Selecciona un País:
+  <a href="#Pais/spain">ESPAÑA</a> |
+  <a href="#Pais/france">FRANCIA</a> |
+  <a href="#Pais/uk">REINO UNIDO</a> |
+  <a href="#Pais/italy">ITALIA</a> |
+  <a href="#Pais/germany">ALEMANIA</a><br/>
+    <div ng-view>
+    </div>
+</div>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="angular-route.js"></script>
+    <script type="text/javascript" src="demoApp.js"></script>
+    <script type="text/javascript" src="demoApp-controller.js"></script>
+    <script type="text/javascript" src="demoApp-config.js"></script>
+
+</body>
+
+</html>
