@@ -1,14 +1,12 @@
 # Angular
 ## Descarga y carga del framework (https://angularjs.org/)
-- 
 - Bower, node(npm), descarga, carga desde CDN.
 - Seleccionar una versión estable y no minificada para desarrollo.
-- Copiar en el proyecto y crear un index.html (carga con etiqueta <script>)
+- Copiar en el proyecto y crear un index.html (carga con etiqueta script)
 - Definir el scope de la apluicación dónde interese, html, body ...
 - https://docs.angularjs.org/api
 
 ## Vistas, directivas, filtros
-
 ### Directivas PredefinidasAngular
 #### ngApp
 - Sirve para definir el scope de nuestra app suele colocarse en la etiqueta html o body.
