@@ -101,3 +101,16 @@ var app1 = angular.module("miApp", [ ... ]);
 	angular.module("miApp"); //Acceso al módulo
 ```
 ### Controladores
+- Todo módulo necesita un controlador para funcionar
+- Un controlador incluye funciones variables y métodos
+- En la vista hace referencia a un controlador mediante el atributo ng-controller
+- Para declarar un controlador usamos angular.module(nombreModulo).controller
+```
+angular.module(nombreModulo).controller('NOMBRE', function($scope){});
+```
+- El controlador recibe al menos un parámetro llamado $scope que representa el ámbito dónde van a tener validez los métodos y variables del controlador.
+- Para evitar código spagueti crear un fichero separado del módulo.
+- Buenas prácticas en la nomenclatura
+	- primera mayuscula
+	- Nombre significativo (camel case)
+	- añadir al final 'Ctrl' o 'Controller'

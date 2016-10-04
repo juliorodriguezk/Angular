@@ -1,7 +1,5 @@
-var demoApp = demoApp || {};
-console.log(demoApp);
 /* Implementación de los filtrosI*/
-demoApp.controller('DemoAppCtrl', ['$scope', function ($scope) {
+angular.module('demoApp').controller('DemoAppCtrl', ['$scope', function ($scope) {
     $scope.datos = [{
         id: 'nombre',
         texto: 'Nombre'

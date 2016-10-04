@@ -3,11 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Formación Angular - Sesión 3</title>
+    <title>Formación Angular</title>
     <link rel="stylesheet" href="demoApp.css">
 </head>
 
 <body ng-app="demoApp">
+	<div ng-controller="DemoAppCtrl">
+		<div>Nombre : {{nombre}}</div>
+		<div ng-bind="apellido"></div>
+		<input type="text" ng-model="frase">
+		<div>Frase : {{frase}}</div>
+
+	</div> 
     <script type="text/javascript" src="angular.js"></script>
     <script type="text/javascript" src="demoApp.js"></script>
     <script type="text/javascript" src="demoApp-controller.js"></script>
