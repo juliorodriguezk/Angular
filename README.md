@@ -66,6 +66,38 @@ no se evaluará
 - Json: Da formato string a un objeto js
 - limitTo: Crea un nuevo array con un tamaño indicado o menor desde la posición que le indiquemos.
 - Lowercase/uppercase : convierte a minúsculas/mayusculas
-- OrderBy: ordena los datos usando una expresión y permite ordenarlos de forma inversa.
+- OrderBy: ordena los datos usando una expresión y permite ordenarlos de forma inversa
 - Filter: Filtra los datos de un array se puede indicar una expresión y un comparador
 - https://docs.angularjs.org/api/ng/filter/filter
+
+### Módulos
+- La vista hace referencia a un módulo mediante el atributo ng-app
+- Un módulo puede ser independiente o necesitar funciones de otros módulos
+- Para declarar un módulo usamos angular.module (minúscula + camel case)
+```
+angular.module("miApp", []);
+angular.module("miApp", ["necesitaModulo1", ..., "necesitaModuloN"]);
+var app1 = angular.module("miApp", [ ... ]);
+```
+- Para indicarle a la vista que vamos a usar el módulo
+```
+<ETI ng-app="miApp">;
+```
+- Buena práctica es envolver todo el código en Expresiones autoejecutables
+  para evitar ensuciar el global
+```
+(function(){
+	'use strict'
+	angular.module("miApp");
+})();
+```
+- Aunque se suele hacer y en muchos tutoriales es práctica habitual, para evitar las colisiones de nombres de variables se debería evitar
+```
+	var app = angular.module("miApp", []); // Puede ocasionar conflictos
+	app. ...;
+
+	//Usar si es posible
+	angular.module("miApp", []); //Declarar módulo
+	angular.module("miApp"); //Acceso al módulo
+```
+### Controladores

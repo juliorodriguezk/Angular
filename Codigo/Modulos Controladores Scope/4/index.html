@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Angular - Sesión 3</title>
+    <link rel="stylesheet" href="demoApp.css">
+</head>
+<!-- Formateo de datos -->
+
+<body ng-app="demoApp">
+    <div ng-controller="DemoAppCtrl">
+        <table>
+            <tr>
+                <th ng-repeat="dato in datos" ng-click="ordena(dato.id)">{{ dato.texto | uppercase }}</th>
+            </tr>
+            <tr ng-repeat="persona in personas | orderBy : ordenarPor : inverso">
+                <td ng-repeat="dato in persona">{{ dato }}</td>
+                <!--<td ng-repeat="(clave, dato) in persona" ng-switch="clave">
+                    <span ng-switch-when="alta" ng-bind="dato | date"></span>
+                    <span ng-switch-when="gastos" ng-bind="dato | currency"></span>
+                    <span ng-switch-when="ciudad" ng-bind="dato | lowercase"></span>
+                    <span ng-switch-default ng-bind="dato"></span>
+                </td>
+                 -->
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="demoApp.js"></script>
+    <script type="text/javascript" src="demoApp-controller.js"></script>
+
+</body>
+
+</html>
