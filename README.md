@@ -31,6 +31,29 @@
 - ngChange: Detecta cambios y ejecuta acción
 - ngRepeat: Iterar sobre colecciones de datos
 - ngShow|ngHide: Oculta o muestra.
-- ngBind: Es lo mismo que {{}}
+- ngBind: Es lo mismo que {{}} o expresiones
 
 ### Expresiones
+- Pueden añadirse a las vistas de dos formas
+	- {{EXPRESION}}
+	- <ETIQ ng-bind="EXPRESION">
+-Angular evalúa la expresión y la sustituye por su valor
+
+```
+{{ 5 + 5}}  -> 10
+{{nombre + " " + apellido}} -> Julio Rodríguez
+```
+- Si eliminamos la directiva ng-app para que esté fuera la expresión
+no se evaluará
+- Las expresiones pueden evaluarse dentro de cualquier etiqueta
+```
+<div ng-app="" ng-init="unColor='lightblue'">
+<input style="background-color:{{unColor}}" ng-model="unColor" value="{{unColor}}">
+
+</div>
+```
+- Dentro de una expresión podemos usar distintos tipos se comportan como javascript
+	- Números
+	- Cadenas
+	- Objetos
+	- Arrays
