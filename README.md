@@ -55,3 +55,19 @@ no se evaluará
 	- Cadenas
 	- Objetos
 	- Arrays
+- Podemos usar los operadores (+ ,- ,* ,/ ,< ,> ,== ,!= ,! ,&& ,||)
+- Se pueden llamar a funciones y métodos del controlador con $scope
+### Filtros
+- Se usan dentro de las expresiones de la siguiente forma
+```
+{{EXPRESIÓN | Filtro1 |Filtro 2|…|Filtro N}}
+```
+- Currency : Da formato monetario al dato
+- Date : Da formato de fecha al dato
+	- https://docs.angularjs.org/api/ng/filter/date
+- Json: Da formato string a un objeto js
+- limitTo: Crea un nuevo array con un tamaño indicado o menor desde la posición que le indiquemos.
+- Lowercase/uppercase : convierte a minúsculas/mayusculas
+- OrderBy: ordena los datos usando una expresión y permite ordenarlos de forma inversa.
+- Filter: Filtra los datos de un array se puede indicar una expresión y un comparador
+- https://docs.angularjs.org/api/ng/filter/filter
