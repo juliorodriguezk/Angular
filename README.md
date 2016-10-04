@@ -14,8 +14,7 @@
 - No se pueden anidar aplicaciones
 
 ```
-<body ng-app="miApp"
-  [ng-strict-di="boolean"]>
+<body ng-app="miApp" [ng-strict-di="boolean"]>
 ...
 </body>
 ```
@@ -46,8 +45,7 @@ no se evaluará
 - Las expresiones pueden evaluarse dentro de cualquier etiqueta
 ```
 <div ng-app="" ng-init="unColor='lightblue'">
-<input style="background-color:{{unColor}}" ng-model="unColor" value="{{unColor}}">
-
+	<input style="background-color:{{unColor}}" ng-model="unColor" value="{{unColor}}">
 </div>
 ```
 - Dentro de una expresión podemos usar distintos tipos se comportan como javascript
