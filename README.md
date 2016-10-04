@@ -55,6 +55,7 @@ no se evaluará
 	- Arrays
 - Podemos usar los operadores (+ ,- ,* ,/ ,< ,> ,== ,!= ,! ,&& ,||)
 - Se pueden llamar a funciones y métodos del controlador con $scope
+
 ### Filtros
 - Se usan dentro de las expresiones de la siguiente forma
 ```
