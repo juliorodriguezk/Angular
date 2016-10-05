@@ -1,7 +1,5 @@
 (function () {
-    /* Ejemplo para hacer los controladores más legibles y modulares */
-    var demoApp = angular.module('demoApp'),
-        DemoAppController = function ($scope) {
+    var DemoAppController = function ($scope) {
 
             $scope.datos = [
                 {
@@ -77,5 +75,5 @@
         };
 
     DemoAppController.$inject = ['$scope'];
-    demoApp.controller('DemoAppController', DemoAppController);
+    angular.module('demoApp').controller('DemoAppController', DemoAppController);
 })();

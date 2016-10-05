@@ -144,11 +144,12 @@ MiModulo.config(function($routeProvider){});
 		  .when('/ruta/que/quiero/:VARIABLE', ...)
 		  ```
 		- Si el path cambia a "PATH" va a hacer lo indicado en REDIRECCIONA_A es un objeto que ofrece las siguientes opciones
-		 - controller : String o función que define el nombre del controlador asociado al templaye que se cargue
-		 - controllerAs : String Se publica en el scope con el alias que asignemos
-		 - template : Se puede definir el template 
-		 - templateUrl: indica que el template se aloja en un fichero html
-		 - redirectTo: redirecciona al path que le indiquemos
+			- template : Código html que se insertara en la ng-view
+			- templateUrl : Ruta a una plantilla html
+			- controller : Controlador para una ruta específica (opcional as alias)
+			- controllerAs : como se va a acceder al controlador
+			- redirectTo : redireccionar a otra ruta (errores / forbidden …)
+			- resolve: objeto que incluye varias funciones que pueden usarse en el controlador y que se ejecutaran antes del cambio de ruta (puede ser factoria …)
 
 
 	- otherwise({redirectTo: 'PATH'})
@@ -158,7 +159,7 @@ MiModulo.config(function($routeProvider){});
 
 - Muy importante, para que funcione la redirección se puede hacer de dos formas
 	-  Haciendo uso del servicio $location
-	-  Mediante las vistas o links en caso de usar un href hay que indicar la raiz de la app con # si no no funcionará
+	-  Mediante las vistas o links en caso de usar un href hay que indicar la raiz de la app con # si no no funcionará es decir # es equivalente a / y desde ahí podemos construir la nueva url #CarpetaTemplates/TemplateModelo
 	```
 	    <a href="#Ruta/A/La/Que/Quiero/Cambiar">CAMBIA RUTA</a>
 	```

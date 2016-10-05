@@ -1,7 +1,6 @@
 (function () {
     /* Añadir ID de persona */
-    var demoApp = angular.module('demoApp'),
-        IndividualDemoAppController = function ($scope, $routeParams) {
+    var IndividualDemoAppController = function ($scope, $routeParams) {
 
             var idPersona = $routeParams.idPersona;
 
@@ -70,5 +69,5 @@
         };
 
     IndividualDemoAppController.$inject = ['$scope', '$routeParams'];
-    demoApp.controller('IndividualDemoAppController', IndividualDemoAppController);
+    angular.module('demoApp').controller('IndividualDemoAppController', IndividualDemoAppController);
 })();

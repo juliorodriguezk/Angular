@@ -1,8 +1,5 @@
 /* Rutas de nuestra aplicación */
-(function () {
-    var demoApp = angular.module('demoApp');
-
-    demoApp.config(function ($routeProvider) {
+angular.module('demoApp').config(function ($routeProvider) {
         $routeProvider
             .when(
                 '/', {
@@ -20,5 +17,4 @@
             .otherwise({
                 redirectTo: '/'
             });
-    });
-})();
+});
