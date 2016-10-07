@@ -163,3 +163,25 @@ MiModulo.config(function($routeProvider){});
 	```
 	    <a href="#Ruta/A/La/Que/Quiero/Cambiar">CAMBIA RUTA</a>
 	```
+https://blog.enriqueoriol.com/2016/03/diferencias-servicios-angularjs.html
+
+### Valores numéricos simples
+	- Objetos simples que no necesitan de inyección de dependencias ni acciones complejas
+
+#### Constantes
+	- No se deben alterar (Aunque es posible).
+	- Se suelen utilizar para configurar la aplicación.
+
+```
+MI_MODULO.constant('SERVERS',{  DEVELOPMENT: "http://localhost:8080/app", PRODUCTION:"http://myDomain.com/app"});
+
+```	
+#### Valores
+	- Guardan valores que se pueden obtener o calcular en un cierto momento del ciclo de la app
+	- Pueden servir para guardar estados / referencias o valores que se usen en la configuración
+	  pero que haya que recuperarlos usando algún método o servicio
+	- Pueden alterarse. 
+
+### Factorías y Servicios
+#### Factorias
+#### Servicios
