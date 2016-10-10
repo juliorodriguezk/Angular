@@ -298,3 +298,11 @@ MI_MODULO.run(['debugger', function(debugger){
     debugger.emite('Prueba de uso');
 }]);
 ```
+
+####TODO
+- directivas personalizadas
+- componentes
+- decorators
+- animation
+- codigo ordenado
+- debugging

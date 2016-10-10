@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Angular - Sesión 3</title>
+    <link rel="stylesheet" href="demoApp.css">
+</head>
+<!-- Filtrado de los datos -->
+
+<body ng-app="demoApp" ng-controller="GlobalDemoAppController">
+    <div class="externo">
+        <h1 ng-bind="configuracion.nombre"></h1></div>
+    <div ng-view>
+    </div>
+    <div class="externo abajo" ng-bind="configuracion.version"></div>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="angular-route.js"></script>
+    <script type="text/javascript" src="demoApp.js"></script>
+    <script type="text/javascript" src="demoApp-config.js"></script>
+    <script type="text/javascript" src="global-demoApp-controller.js"></script>
+    <script type="text/javascript" src="demoApp-controller.js"></script>
+    <script type="text/javascript" src="individual-demoApp-controller.js"></script>
+    <script type="text/javascript" src="demoApp-factory.js"></script>
+    <script type="text/javascript" src="demoApp-service.js"></script>
+    <script type="text/javascript" src="demoApp-values.js"></script>
+    <script type="text/javascript" src="demoApp-constants.js"></script>
+    <script type="text/javascript" src="demoApp-filters.js"></script>
+
+</body>
+
+</html>
