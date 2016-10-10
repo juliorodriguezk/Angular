@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Angular</title>
+    <link rel="stylesheet" href="demoApp.css">
+</head>
+
+<body ng-app="demoApp">
+	<div ng-controller="DemoAppCtrl">
+    {{emo1+ ":    "}}{{emo1 | convierteEmoticono : "hola" : "masParametros": 5: [1,2,3]}} </br>
+    {{emo2+ ":    "}}{{emo2 | convierteEmoticono}} </br>
+    {{emo3+ ":    "}}{{emo3 | convierteEmoticono}} </br>
+    {{emo4+ ":    "}}{{emo4 | convierteEmoticono}} </br>
+    {{emo5+ ":    "}}{{emo5 | convierteEmoticono}} </br>
+    {{emo6+ ":    "}}{{emo6 | convierteEmoticono}} </br>
+    {{emo7+ ":    "}}{{emo7 | convierteEmoticono}} </br>
+    {{emo8+ ":    "}}{{emo8 | convierteEmoticono}} </br>
+    {{emo9+ ":    "}}{{emo9 | convierteEmoticono}} </br>
+	</div> 
+
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="demoApp.js"></script>
+    <script type="text/javascript" src="demoApp-constants.js"></script>
+    <script type="text/javascript" src="demoApp-filters.js"></script>
+    <script type="text/javascript" src="demoApp-config.js"></script>
+    <script type="text/javascript" src="demoApp-run.js"></script>
+    <script type="text/javascript" src="demoApp-controller.js"></script>
+</body>
+
+</html>
