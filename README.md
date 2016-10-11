@@ -228,13 +228,19 @@ MI_MODULO.config(['NOMBRE_CONSTANTE', function(NOMBRE_CONSTANTE){console.log(NOM
 	  pero que haya que recuperarlos usando algún método o servicio
 	- Pueden alterarse. 
 
-´´´
+```
 //Definición
 MI_MODULO.value('sesion','111111111111111');
-MI_MODULO.value('generaToken',function(semilla){return Math.floor(Math.random () + semilla) * 1000;});
+MI_MODULO.value('generaToken',function(semilla){
+						return Math.floor(Math.random () + semilla) * 1000;
+						});
+
 //Uso
-MI_MODULO.run(['generaToken', 'sesion', 'CONSTANTE', function (generaToken, sesion, CONSTANTE){var nuevaSesion = generarToken(CONSTANTE); sesion = nuevaSesion;}])
-´´´
+MI_MODULO.run(['generaToken', 'sesion', function (generaToken, sesion){
+						var nuevaSesion = generarToken('aaa'); 
+						sesion = nuevaSesion;}]);
+```
+
 ### Factorías, Servicios y Providers
 #### Servicios
 	- Función Constructor que se inyecta en la fase de ejecución
@@ -248,7 +254,7 @@ MI_MODULO.run(['generaToken', 'sesion', 'CONSTANTE', function (generaToken, sesi
     this.valorToken = "El valor del token es: " + token;
 	}]);
 	//Uso
-	MI_MODULO.run('Autenticador', ['Autenticador', function(Autenticador) {
+	MI_MODULO.run(['Autenticador', function(Autenticador) {
     console.log(Autenticador.valorToken);
 	}]);
 	```
@@ -256,7 +262,7 @@ MI_MODULO.run(['generaToken', 'sesion', 'CONSTANTE', function (generaToken, sesi
 	- Caso genérico de servicio (más enfocado a inicializaciones).
 	- Permite la inyección de dependencias.
 	- Nos devuelve lo que le indiquemos en el return por lo que no es necesario usar this
-	```
+	````
 	//Definición
 	MI_MODULO.factory('Autenticador', ['$window', 'token', function('$window', token) {
     var semilla  = $window.localStorage.getItem(semilla),
@@ -264,10 +270,10 @@ MI_MODULO.run(['generaToken', 'sesion', 'CONSTANTE', function (generaToken, sesi
     return valorToken;
 	}]);
 	//Uso
-	MI_MODULO.run('Autenticador', ['Autenticador', function(Autenticador) {
+	MI_MODULO.run(['Autenticador', function(Autenticador) {
     console.log(Autenticador);
 	}]);
-	```
+	````
 #### Provider
 	- Caso más genérico de servicio.
 	- Permite la inyección de dependencias.
