@@ -166,11 +166,13 @@ MiModulo.config(function($routeProvider){});
 https://blog.enriqueoriol.com/2016/03/diferencias-servicios-angularjs.html
 
 ### Filtros personalizados
-	- Sirven para personalizar los filtros y mejorar nuestras vistas.
-	- Mi_modulo.filter(nombre, función)
-	- El módulo debe devolver una función que recibe como parámetro el dato a formatear
-	- La función recibe como primer parámetro el texto a formatear
-	- se pueden enviar parámetros opcionales con : desde la vista
+
+- Sirven para personalizar los filtros y mejorar nuestras vistas.
+- Mi_modulo.filter(nombre, función)
+- El módulo debe devolver una función que recibe como parámetro el dato a formatear
+- La función recibe como primer parámetro el texto a formatear
+- Se pueden enviar parámetros opcionales con : desde la vista
+
 ```
 MI_MODULO.filter('convierteEmoticono', [function(palabra) {
 	return function (palabra){
@@ -201,20 +203,20 @@ MI_MODULO.filter('convierteEmoticono', [function(palabra) {
 
 ### Fases del ciclo de vida de una app Angular
 #### Configuración
-	- Fase inicial podemos inyectar providers y constantes
+- Fase inicial podemos inyectar providers y constantes
 #### Ejecución
-	- Empieza una vez ha finalizado la de configuración
-	- Podemos inyectar constates, valores, servicios y factorías
-	- En esta fase es cuando interactian controladores - vistas y servicios
+- Empieza una vez ha finalizado la de configuración
+- Podemos inyectar constates, valores, servicios y factorías
+- En esta fase es cuando interactian controladores - vistas y servicios
 
-app.config() -> app.run() -> (directivas, fase compilación) -> app.controller() -> (directivas, fase link)
+	app.config() -> app.run() -> (directivas, fase compilación) -> app.controller() -> (directivas, fase link)
 
 ### Valores numéricos simples
-	- Objetos simples que no necesitan de inyección de dependencias ni acciones complejas
+- Objetos simples que no necesitan de inyección de dependencias ni acciones complejas
 
 #### Constantes
-	- No se deben alterar (Aunque es posible).
-	- Se suelen utilizar para configurar la aplicación.
+- No se deben alterar (Aunque es posible).
+- Se suelen utilizar para configurar la aplicación.
 
 ```
 //Definición
@@ -223,10 +225,10 @@ MI_MODULO.constant('NOMBRE_CONSTANTE',{  VALOR_A: "xxxx", VALOR_B:"yyyy"});
 MI_MODULO.config(['NOMBRE_CONSTANTE', function(NOMBRE_CONSTANTE){console.log(NOMBRE_CONSTANTE.VALOR_A);}]);
 ```	
 #### Valores
-	- Guardan valores que se pueden obtener o calcular en un cierto momento del ciclo de la app
-	- Pueden servir para guardar estados / referencias o valores que se usen en la configuración
-	  pero que haya que recuperarlos usando algún método o servicio
-	- Pueden alterarse. 
+- Guardan valores que se pueden obtener o calcular en un cierto momento del ciclo de la app
+- Pueden servir para guardar estados / referencias o valores que se usen en la configuración
+  pero que haya que recuperarlos usando algún método o servicio
+- Pueden alterarse. 
 
 ```
 //Definición
@@ -243,42 +245,47 @@ MI_MODULO.run(['generaToken', 'sesion', function (generaToken, sesion){
 
 ### Factorías, Servicios y Providers
 #### Servicios
-	- Función Constructor que se inyecta en la fase de ejecución
-	- Permite la inyección de dependencias.
-	- Se usa el método new de javascript para instanciarlo por lo que
-	  para añadirle propiedades y métodos tenemos que usar this, este
-	  objeto this es lo que nos devuelve el servicio cuando se inyecta.
-	```
-	//Definición
-	MI_MODULO.service('Autenticador', ['token', function(token) {
-    this.valorToken = "El valor del token es: " + token;
-	}]);
-	//Uso
-	MI_MODULO.run(['Autenticador', function(Autenticador) {
-    console.log(Autenticador.valorToken);
-	}]);
-	```
-#### Factorias
-	- Caso genérico de servicio (más enfocado a inicializaciones).
-	- Permite la inyección de dependencias.
-	- Nos devuelve lo que le indiquemos en el return por lo que no es necesario usar this
-	````
-	//Definición
-	MI_MODULO.factory('Autenticador', ['$window', 'token', function('$window', token) {
-    var semilla  = $window.localStorage.getItem(semilla),
-    valorToken = token + semilla;
-    return valorToken;
-	}]);
-	//Uso
-	MI_MODULO.run(['Autenticador', function(Autenticador) {
-    console.log(Autenticador);
-	}]);
-	````
-#### Provider
-	- Caso más genérico de servicio.
-	- Permite la inyección de dependencias.
-	- Proporciona una api para su configuración 
+
+- Función Constructor que se inyecta en la fase de ejecución
+- Permite la inyección de dependencias.
+- Se usa el método new de javascript para instanciarlo por lo que
+  para añadirle propiedades y métodos tenemos que usar this, este
+  objeto this es lo que nos devuelve el servicio cuando se inyecta.
 ```
+//Definición
+MI_MODULO.service('Autenticador', ['token', function(token) {
+   this.valorToken = "El valor del token es: " + token;
+}]);
+//Uso
+MI_MODULO.run(['Autenticador', function(Autenticador) {
+   console.log(Autenticador.valorToken);
+}]);
+	```
+
+#### Factorias
+
+- Caso genérico de servicio (más enfocado a inicializaciones).
+- Permite la inyección de dependencias.
+- Nos devuelve lo que le indiquemos en el return por lo que no es necesario usar this
+
+````
+//Definición
+MI_MODULO.factory('Autenticador', ['$window', 'token', function('$window', token) {
+   var semilla  = $window.localStorage.getItem(semilla),
+   valorToken = token + semilla;
+   return valorToken;
+}]);
+//Uso
+MI_MODULO.run(['Autenticador', function(Autenticador) {
+   console.log(Autenticador);
+}]);
+````
+
+#### Provider
+- Caso más genérico de servicio.
+- Permite la inyección de dependencias.
+- Proporciona una api para su configuración 
+````
 //Definición
 MI_MODULO.provider('debugger', function(){
   var emiteLogs = false;
