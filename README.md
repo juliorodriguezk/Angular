@@ -260,7 +260,7 @@ MI_MODULO.service('Autenticador', ['token', function(token) {
 MI_MODULO.run(['Autenticador', function(Autenticador) {
    console.log(Autenticador.valorToken);
 }]);
-	```
+```
 
 #### Factorias
 
@@ -282,9 +282,11 @@ MI_MODULO.run(['Autenticador', function(Autenticador) {
 ````
 
 #### Provider
+
 - Caso más genérico de servicio.
 - Permite la inyección de dependencias.
 - Proporciona una api para su configuración 
+
 ````
 //Definición
 MI_MODULO.provider('debugger', function(){
