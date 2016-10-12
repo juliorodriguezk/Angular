@@ -58,9 +58,11 @@ no se evaluará
 
 ### Filtros
 - Se usan dentro de las expresiones de la siguiente forma
+
 ```
 {{EXPRESIÓN | Filtro1 |Filtro 2|…|Filtro N}}
 ```
+
 - Currency : Da formato monetario al dato
 - Date : Da formato de fecha al dato
 	- https://docs.angularjs.org/api/ng/filter/date
@@ -72,27 +74,35 @@ no se evaluará
 - https://docs.angularjs.org/api/ng/filter/filter
 
 ### Módulos
+
 - La vista hace referencia a un módulo mediante el atributo ng-app
 - Un módulo puede ser independiente o necesitar funciones de otros módulos
 - Para declarar un módulo usamos angular.module (minúscula + camel case)
+
 ```
 angular.module("miApp", []);
 angular.module("miApp", ["necesitaModulo1", ..., "necesitaModuloN"]);
 var app1 = angular.module("miApp", [ ... ]);
 ```
+
 - Para indicarle a la vista que vamos a usar el módulo
+
 ```
 <ETI ng-app="miApp">;
 ```
+
 - Buena práctica es envolver todo el código en Expresiones autoejecutables
   para evitar ensuciar el global
+
 ```
 (function(){
 	'use strict'
 	angular.module("miApp");
 })();
 ```
+
 - Aunque se suele hacer y en muchos tutoriales es práctica habitual, para evitar las colisiones de nombres de variables se debería evitar
+
 ```
 	var app = angular.module("miApp", []); // Puede ocasionar conflictos
 	app. ...;
@@ -101,7 +111,9 @@ var app1 = angular.module("miApp", [ ... ]);
 	angular.module("miApp", []); //Declarar módulo
 	angular.module("miApp"); //Acceso al módulo
 ```
+
 ### Controladores
+
 - Todo módulo necesita un controlador para funcionar
 - Un controlador incluye funciones variables y métodos
 - En la vista hace referencia a un controlador mediante el atributo ng-controller
@@ -117,34 +129,43 @@ angular.module(nombreModulo).controller('NOMBRE', function($scope){});
 	- añadir al final 'Ctrl' o 'Controller'
 
 ### Routing
+
 - El módulo de routing permite a la aplicación definir las distintas vistas
 que se pueden usar
+
 ```
 http://MiWeb/index.html#Vista1
 ...
 http://MiWeb/index.html#VistaN
 ```
+
 - Es necesario descargar e incluir el script angular-route.js acorde a la version usada de angular
 	- https://code.angularjs.org/X.X.X/angular-route.js
 
 - Hay que configurar las rutas usando 
+
 ´´´
 MiModulo.config(function($routeProvider){});
 ´´´
+
 -Podemos dar acceso al $routeProvider a variables que se pueden usar poniendo : delante al definirse el PATH
-	```
+
+```
 	MiModulo.controller('micontrolador', function ($scope, $routeParams){});
-	```
+```
+
 - $routeProvider proporciona dos métodos esenciales
 	- when(PATH, REDIRECCIONA_A)
 		- Para definir una ruta por defecto PATH = '/'
 		- Si en el controlador se ha incluido el $routeParams el path puede
 		  depender de variables declaradas en el controlador sirve para agrupar redirecciones en un mismo when
+
 		  ```
 		  .when('/ruta/que/quiero/:VARIABLE', ...)
 		  ```
+
 		- Si el path cambia a "PATH" va a hacer lo indicado en REDIRECCIONA_A es un objeto que ofrece las siguientes opciones
-			- template : Código html que se insertara en la ng-view
+		- template : Código html que se insertara en la ng-view
 			- templateUrl : Ruta a una plantilla html
 			- controller : Controlador para una ruta específica (opcional as alias)
 			- controllerAs : como se va a acceder al controlador
@@ -164,6 +185,7 @@ MiModulo.config(function($routeProvider){});
 	    <a href="#Ruta/A/La/Que/Quiero/Cambiar">CAMBIA RUTA</a>
 	```
 https://blog.enriqueoriol.com/2016/03/diferencias-servicios-angularjs.html
+
 
 ### Filtros personalizados
 
@@ -202,9 +224,13 @@ MI_MODULO.filter('convierteEmoticono', [function(palabra) {
 
 
 ### Fases del ciclo de vida de una app Angular
+
 #### Configuración
+
 - Fase inicial podemos inyectar providers y constantes
+
 #### Ejecución
+
 - Empieza una vez ha finalizado la de configuración
 - Podemos inyectar constates, valores, servicios y factorías
 - En esta fase es cuando interactian controladores - vistas y servicios
@@ -212,9 +238,11 @@ MI_MODULO.filter('convierteEmoticono', [function(palabra) {
 	app.config() -> app.run() -> (directivas, fase compilación) -> app.controller() -> (directivas, fase link)
 
 ### Valores numéricos simples
+
 - Objetos simples que no necesitan de inyección de dependencias ni acciones complejas
 
 #### Constantes
+
 - No se deben alterar (Aunque es posible).
 - Se suelen utilizar para configurar la aplicación.
 
@@ -225,6 +253,7 @@ MI_MODULO.constant('NOMBRE_CONSTANTE',{  VALOR_A: "xxxx", VALOR_B:"yyyy"});
 MI_MODULO.config(['NOMBRE_CONSTANTE', function(NOMBRE_CONSTANTE){console.log(NOMBRE_CONSTANTE.VALOR_A);}]);
 ```	
 #### Valores
+
 - Guardan valores que se pueden obtener o calcular en un cierto momento del ciclo de la app
 - Pueden servir para guardar estados / referencias o valores que se usen en la configuración
   pero que haya que recuperarlos usando algún método o servicio
@@ -244,6 +273,7 @@ MI_MODULO.run(['generaToken', 'sesion', function (generaToken, sesion){
 ```
 
 ### Factorías, Servicios y Providers
+
 #### Servicios
 
 - Función Constructor que se inyecta en la fase de ejecución
@@ -251,6 +281,7 @@ MI_MODULO.run(['generaToken', 'sesion', function (generaToken, sesion){
 - Se usa el método new de javascript para instanciarlo por lo que
   para añadirle propiedades y métodos tenemos que usar this, este
   objeto this es lo que nos devuelve el servicio cuando se inyecta.
+
 ```
 //Definición
 MI_MODULO.service('Autenticador', ['token', function(token) {
@@ -315,6 +346,7 @@ MI_MODULO.run(['debugger', function(debugger){
 ```
 
 ### Directivas personalizadas
+
 - Se usan para proporcionar funcionalidad extendida en el HTML
 - Angular recorre DOM -> Fase de compilación .compile() -> Fase link .link()
 - Pueden definirse como AECM (no son excluyentes):
@@ -322,9 +354,12 @@ MI_MODULO.run(['debugger', function(debugger){
 	- E: Como un elemento o atributo
 	- C: Como una clase
 	- M: Como un comentario
+
 #### ngInclude
+
 - Directiva nativa angular
 - Permite incluir fragmentos html en nuestras vistas
+
 ```
 <ng-include src="'vistas/miFragmento.html'"></ng-include>
 <div ng-include="vistas/miFragmento.html"></div>
@@ -345,9 +380,12 @@ Mi_Modulo.directive("nombre", function(){
 })
 
 ### El objeto de configuración
+
 #### restrict
+
 - Indica el tipo o tipos en los que se puede usar nuestra directiva
 - IE no soporta tipo E
+
 ```
 {
   ...
@@ -355,10 +393,13 @@ Mi_Modulo.directive("nombre", function(){
   ...
 }
 ```
+
 #### templateUrl | template
+
 - Definen la plantilla que se va a asociar a la vista de nuestra directiva
 - Hace uso de ngInclude (internamente) para añadirla
 - En lugar de poner el valor puede ser una función
+
 ```
 {
   ...
@@ -373,62 +414,81 @@ function (elem, attr){
 	//attr(parametros que se les pasa)
 }
 ```
+
 #### transclude
+
 #### require
+
 #### scope
 
 #### compile
+
 - Sólo se llama 1 vez si está dentro de un bucle.
+
 ```
 compile: function(elem, attrs, trans){}
 ```
 
-	##### Para qué Usar
-	- Inicializar instancias que luego se van a repetir
+##### Para qué Usar
 
-	##### Para qué No Usar
-	- Añadir manejadores/eventos
-	- Acceder a los nodos hijos
+- Inicializar instancias que luego se van a repetir
+
+##### Para qué No Usar
+
+- Añadir manejadores/eventos
+- Acceder a los nodos hijos
 
 
 #### controller
+
 - Se llama 1 vez por instancia
+
 ```
 controller: function ($scope, $element) {}
 
 ```
-	##### Para qué Usar
-	- Definir la lógica del controlador
-	- Inicializar variables del Scope
 
-	##### Para qué No Usar
-	- Acceder a los nodos hijos (Todavía no podemos asegurar creación o modificación)
+##### Para qué Usar
+
+- Definir la lógica del controlador
+- Inicializar variables del Scope
+
+##### Para qué No Usar
+- Acceder a los nodos hijos (Todavía no podemos asegurar creación o modificación)
 
 #### link
+
 - Si no usamos pre/postlink se puede usar (desaconsejado)
 
 #### pre-link
+
 - Antes de añadir el nodo en el padre
 
 ```
 return {
                 pre: function (scope, elem, attrs, ctrl) {
 ```
-	##### Para qué Usar
-	- Inicializar Nodo a añadir
 
-	##### Para qué No Usar
-	- Acceder a los nodos hijos (Todavía no podemos asegurar creación o modificación)
+##### Para qué Usar
+
+- Inicializar Nodo a añadir
+
+##### Para qué No Usar
+
+- Acceder a los nodos hijos (Todavía no podemos asegurar creación o modificación)
 
 
 #### post-link
+
 - Tras añadir el nodo en el padre
 
-	##### Para qué Usar
-	- Manipular elementos del dom ya que han sido creados.
-	- Añadir manejadores de eventos.
-	- Acceder nodos hijos.
-	- añadir observations en attributos y watchers en el scope.
+##### Para qué Usar
+
+- Manipular elementos del dom ya que han sido creados.
+- Añadir manejadores de eventos.
+- Acceder nodos hijos.
+- añadir observations en attributos y watchers en el scope.
+
 ```
 return {
           post: function (scope, elem, attrs, ctrl) {
