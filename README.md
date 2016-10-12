@@ -379,6 +379,7 @@ function (elem, attr){
 
 #### compile
 - Sólo se llama 1 vez si está dentro de un bucle.
+
 ##### Para qué Usar
 - Inicializar instancias que luego se van a repetir
 
@@ -405,10 +406,13 @@ controller: function ($scope, $element) {}
 
 #### link
 - Si no usamos pre/postlink se puede usar (desaconsejado)
+
 #### pre-link
 - Antes de añadir el nodo en el padre
+
 ##### Para qué Usar
 - Inicializar Nodo a añadir
+
 ##### Para qué No Usar
 - Acceder a los nodos hijos (Todavía no podemos asegurar creación o modificación)
 
@@ -419,6 +423,7 @@ return {
 
 #### post-link
 - Tras añadir el nodo en el padre
+
 ##### Para qué Usar
 - Manipular elementos del dom ya que han sido creados.
 - Añadir manejadores de eventos.
