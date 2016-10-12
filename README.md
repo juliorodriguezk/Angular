@@ -379,17 +379,17 @@ function (elem, attr){
 
 #### compile
 - Sólo se llama 1 vez si está dentro de un bucle.
-
-##### Para qué Usar
-- Inicializar instancias que luego se van a repetir
-
-##### Para qué No Usar
-- Añadir manejadores/eventos
-- Acceder a los nodos hijos
-
 ```
 compile: function(elem, attrs, trans){}
 ```
+
+	##### Para qué Usar
+	- Inicializar instancias que luego se van a repetir
+
+	##### Para qué No Usar
+	- Añadir manejadores/eventos
+	- Acceder a los nodos hijos
+
 
 #### controller
 - Se llama 1 vez por instancia
@@ -397,12 +397,12 @@ compile: function(elem, attrs, trans){}
 controller: function ($scope, $element) {}
 
 ```
-##### Para qué Usar
-- Definir la lógica del controlador
-- Inicializar variables del Scope
+	##### Para qué Usar
+	- Definir la lógica del controlador
+	- Inicializar variables del Scope
 
-##### Para qué No Usar
-- Acceder a los nodos hijos (Todavía no podemos asegurar creación o modificación)
+	##### Para qué No Usar
+	- Acceder a los nodos hijos (Todavía no podemos asegurar creación o modificación)
 
 #### link
 - Si no usamos pre/postlink se puede usar (desaconsejado)
@@ -410,25 +410,25 @@ controller: function ($scope, $element) {}
 #### pre-link
 - Antes de añadir el nodo en el padre
 
-##### Para qué Usar
-- Inicializar Nodo a añadir
-
-##### Para qué No Usar
-- Acceder a los nodos hijos (Todavía no podemos asegurar creación o modificación)
-
 ```
 return {
                 pre: function (scope, elem, attrs, ctrl) {
 ```
+	##### Para qué Usar
+	- Inicializar Nodo a añadir
+
+	##### Para qué No Usar
+	- Acceder a los nodos hijos (Todavía no podemos asegurar creación o modificación)
+
 
 #### post-link
 - Tras añadir el nodo en el padre
 
-##### Para qué Usar
-- Manipular elementos del dom ya que han sido creados.
-- Añadir manejadores de eventos.
-- Acceder nodos hijos.
-- añadir observations en attributos y watchers en el scope.
+	##### Para qué Usar
+	- Manipular elementos del dom ya que han sido creados.
+	- Añadir manejadores de eventos.
+	- Acceder nodos hijos.
+	- añadir observations en attributos y watchers en el scope.
 ```
 return {
           post: function (scope, elem, attrs, ctrl) {
