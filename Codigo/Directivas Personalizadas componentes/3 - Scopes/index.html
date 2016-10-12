@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Angular - Sesión 3</title>
+    <link rel="stylesheet" href="demoApp.css">
+</head>
+
+<body ng-app="demoApp">
+    <div ng-controller="DemoAppCtrl">
+        TAMAÑO DEL ARRAY DE PERSONAS :
+        <span ng-bind="personas.length"></span>
+        <br> {{ personas }}
+        <input type="button" ng-click="anade()" value="Añade elemento CONTROLADOR PADRE">
+        <br>
+        <br>
+        <image-directive data-mi-primer-atributo="A" mi-attr="{{ personas }}">
+        </image-directive>
+    </div>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="demoApp.js"></script>
+    <script type="text/javascript" src="demoApp-controller.js"></script>
+    <script type="text/javascript" src="image-directive.js"></script>
+    <script type="text/javascript" src="demo-directive.js"></script>
+
+
+</body>
+
+</html>

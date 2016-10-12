@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formación Angular</title>
+    <link rel="stylesheet" href="demoApp.css">
+</head>
+
+<body ng-app="demoApp">
+    <div ng-controller="DemoAppCtrl">
+        <!-- <div ng-controller="DemoAppCtrl" ng-repeat="persona in personas"> -->
+        <div ng-repeat="instancia in instancias">
+        <data-image-directive></data-image-directive>
+        </div>
+        <!-- <data-image-directive data-mi-primer-atributo="TEST"></data-image-directive> -->
+        <!-- <data-image-directive data-mi-primer-atributo="A"></data-image-directive> -->
+        <!--<data-image-directive data-mi-primer-atributo="B"></data-image-directive> -->
+        <!--<data-image-directive data-mi-primer-atributo="C"></data-image-directive>-->
+        <!-- <data-image-directive data-mi-primer-atributo="A" data-otra-directive></data-image-directive>-->
+
+        <!--<div image-directive>{{ personas.nombre }}</div>-->
+        <!--<div class="image-directive">{{ personas.nombre }}</div>-->
+        <!-- directive: image-directive  -->
+
+    </div>
+    <script type="text/javascript" src="angular.js"></script>
+    <script type="text/javascript" src="demoApp.js"></script>
+    <script type="text/javascript" src="demoApp-controller.js"></script>
+    <script type="text/javascript" src="image-directive.js"></script>
+    <script type="text/javascript" src="demo-directive.js"></script>
+
+
+</body>
+
+</html>

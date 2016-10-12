@@ -314,9 +314,122 @@ MI_MODULO.run(['debugger', function(debugger){
 }]);
 ```
 
+### Directivas personalizadas
+- Se usan para proporcionar funcionalidad extendida en el HTML
+- Angular recorre DOM -> Fase de compilación .compile() -> Fase link .link()
+- Pueden definirse como AECM (no son excluyentes):
+	- A : Como un atributo en una etiqueta
+	- E: Como un elemento o atributo
+	- C: Como una clase
+	- M: Como un comentario
+#### ngInclude
+- Directiva nativa angular
+- Permite incluir fragmentos html en nuestras vistas
+```
+<ng-include src="'vistas/miFragmento.html'"></ng-include>
+<div ng-include="vistas/miFragmento.html"></div>
+<div class="ng-include:'vistas/miFragmento.html'; color:blue"></div>
+
+```
+
+#### Creación de la directiva
+- Nombre 
+	- camelCase  miDirectiva (en javascript)
+	- camelCase  mi-directiva (en HTML)
+- En el HTML hay que cerrar los tags <mi-directiva></mi-directiva>
+- Se pueden inyectar dependencias en las directivas
+Mi_Modulo.directive("nombre", function(){
+	return {
+	//Objeto de configuración que define como funciona
+	};
+})
+
+### El objeto de configuración
+#### restrict
+- Indica el tipo o tipos en los que se puede usar nuestra directiva
+- IE no soporta tipo E
+```
+{
+  ...
+  restrict : 'EACM'
+  ...
+}
+```
+#### templateUrl | template
+- Definen la plantilla que se va a asociar a la vista de nuestra directiva
+- Hace uso de ngInclude (internamente) para añadirla
+- En lugar de poner el valor puede ser una función
+```
+{
+  ...
+  template : 'Código'
+  templateUrl: 'Ruta al html'
+  ...
+}
+
+//template y templateUrl pueden usar funciones
+function (elem, attr){
+	//elem (nodo html)
+	//attr(parametros que se les pasa)
+}
+```
+#### transclude
+#### require
+#### scope
+
+#### compile
+- Sólo se llama 1 vez si está dentro de un bucle.
+##### Para qué Usar
+- Inicializar instancias que luego se van a repetir
+
+##### Para qué No Usar
+- Añadir manejadores/eventos
+- Acceder a los nodos hijos
+
+```
+compile: function(elem, attrs, trans){}
+```
+
+#### controller
+- Se llama 1 vez por instancia
+```
+controller: function ($scope, $element) {}
+
+```
+##### Para qué Usar
+- Definir la lógica del controlador
+- Inicializar variables del Scope
+
+##### Para qué No Usar
+- Acceder a los nodos hijos (Todavía no podemos asegurar creación o modificación)
+
+#### link
+- Si no usamos pre/postlink se puede usar (desaconsejado)
+#### pre-link
+- Antes de añadir el nodo en el padre
+##### Para qué Usar
+- Inicializar Nodo a añadir
+##### Para qué No Usar
+- Acceder a los nodos hijos (Todavía no podemos asegurar creación o modificación)
+
+```
+return {
+                pre: function (scope, elem, attrs, ctrl) {
+```
+
+#### post-link
+- Tras añadir el nodo en el padre
+##### Para qué Usar
+- Manipular elementos del dom ya que han sido creados.
+- Añadir manejadores de eventos.
+- Acceder nodos hijos.
+- añadir observations en attributos y watchers en el scope.
+```
+return {
+          post: function (scope, elem, attrs, ctrl) {
+```
+
 ####TODO
-- directivas personalizadas
-- componentes
 - decorators
 - animation
 - codigo ordenado
